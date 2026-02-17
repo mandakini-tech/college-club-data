@@ -1,0 +1,579 @@
+/* ============================================
+   CommitteHub — home.css
+   Aesthetic: Dark editorial with gold accents
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  --bg-primary:     #0b0e1a;
+  --bg-card:        #12162a;
+  --bg-card-hover:  #171c34;
+  --gold:           #c9a84c;
+  --gold-light:     #e8c97a;
+  --gold-dim:       #7a6030;
+  --text-primary:   #f0eee6;
+  --text-secondary: #9a97a0;
+  --text-muted:     #5a5868;
+  --accent-teal:    #3ecfb2;
+  --border:         rgba(201, 168, 76, 0.15);
+  --border-hover:   rgba(201, 168, 76, 0.5);
+  --shadow-card:    0 8px 40px rgba(0,0,0,0.5);
+  --shadow-glow:    0 0 30px rgba(201, 168, 76, 0.12);
+  --radius:         14px;
+  --transition:     0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Subtle noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── Navigation ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 14, 26, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.02em;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+}
+
+.nav-links li a {
+  display: block;
+  padding: 0.45rem 1.1rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: 6px;
+  transition: color var(--transition), background var(--transition);
+  text-transform: uppercase;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.08);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ── Container ── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Sections ── */
+section {
+  display: none;
+  padding: 3.5rem 0 4rem;
+  animation: fadeIn 0.45s ease;
+}
+
+section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+section h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 2.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+section h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border-radius: 2px;
+}
+
+/* ── Home — Committee Grid ── */
+#home {
+  display: block;
+}
+
+/* Grid: exactly 3 per row */
+#home .committee-box ~ .committee-box ~ .committee-box ~ .committee-box {
+  /* handled via grid below */
+}
+
+/* Wrap all committee-box siblings inside a grid */
+#home {
+  /* Use a CSS grid wrapper by targeting the container pattern */
+}
+
+/* Since boxes are direct children of section, use CSS grid trick */
+#home > .committee-box {
+  /* These get display:grid from parent — see wrapper below */
+}
+
+/* Override: wrap with implicit grid using display:contents parent trick.
+   We'll handle via a flex + width approach so it works without JS. */
+
+#home {
+  padding: 3.5rem 0 4rem;
+}
+
+/* Create virtual 3-column grid for committee boxes */
+#home .committee-box:first-of-type {
+  /* Grid starts */
+}
+
+/* The real grid magic — all committee boxes in a 3-col grid */
+#home {
+  /* Wrap committee-boxes with a CSS grid using a pseudo-wrapper */
+}
+
+/* ── Committee Boxes — 3 per row grid layout ── */
+/* We wrap them at the CSS level using a display grid on a parent. 
+   Since the section IS the parent, use grid-template-columns */
+
+#home .committee-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem 1.5rem;
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+#home .committee-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+#home .committee-box:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+  background: var(--bg-card-hover);
+}
+
+#home .committee-box:hover::before {
+  opacity: 1;
+}
+
+/* Wrap committee boxes in a grid layout */
+#home .committee-box:first-of-type {
+  /* Begin grid context — handled via wrapping approach in the section */
+}
+
+/* ── Make the section itself a grid for committee boxes ── */
+#home {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+/* But h1 should span full width */
+#home h1 {
+  grid-column: 1 / -1;
+  margin-bottom: 1rem;
+}
+
+/* ── Image Wrapper ── */
+.image-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.1rem;
+  border: 2px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  background: var(--bg-primary);
+}
+
+.committee-box:hover .image-wrapper {
+  border-color: var(--gold-dim);
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.2);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s ease;
+}
+
+.committee-box:hover .image-wrapper img {
+  transform: scale(1.08);
+}
+
+/* ── Committee Text ── */
+.committee-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+.committee-description {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.75rem;
+  background: rgba(201, 168, 76, 0.08);
+  border-radius: 20px;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  display: inline-block;
+  margin-top: 0.2rem;
+}
+
+/* ── Events Section ── */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.event-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--border-hover);
+}
+
+.event-header {
+  background: linear-gradient(135deg, #1a1430, #0f1a2e);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.event-date {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.event-header > div:last-child {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.event-body {
+  padding: 1.25rem 1.5rem;
+}
+
+.event-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.event-details {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
+}
+
+.event-committee {
+  display: inline-block;
+  margin-top: 0.85rem;
+  padding: 0.2rem 0.7rem;
+  background: rgba(62, 207, 178, 0.1);
+  color: var(--accent-teal);
+  border: 1px solid rgba(62, 207, 178, 0.25);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Match Section ── */
+.match-container {
+  max-width: 760px;
+}
+
+.match-intro {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.match-intro h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.match-intro p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.interests-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+
+.interest-tag {
+  padding: 0.5rem 1.1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all var(--transition);
+  user-select: none;
+}
+
+.interest-tag:hover {
+  border-color: var(--gold-dim);
+  color: var(--text-primary);
+}
+
+.interest-tag.selected {
+  background: rgba(201, 168, 76, 0.12);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.match-button {
+  display: inline-block;
+  padding: 0.85rem 2.5rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #0b0e1a;
+  border: none;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+}
+
+.match-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.45);
+}
+
+.match-button:active {
+  transform: translateY(0);
+}
+
+.match-result {
+  display: none;
+  margin-top: 2rem;
+  padding: 1.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius);
+  animation: fadeIn 0.4s ease;
+}
+
+.match-result h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.matched-committee {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.match-result p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dim);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  #home {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #home {
+    grid-template-columns: 1fr !important;
+  }
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: rgba(11, 14, 26, 0.98);
+    padding: 1rem;
+    flex-direction: column;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .container {
+    padding: 0 1rem;
+  }
+}
