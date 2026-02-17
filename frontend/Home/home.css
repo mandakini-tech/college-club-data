@@ -179,19 +179,13 @@ section h1::after {
 }
 
 /* Grid: exactly 3 per row */
-#home .committee-box ~ .committee-box ~ .committee-box ~ .committee-box {
-  /* handled via grid below */
-}
+
 
 /* Wrap all committee-box siblings inside a grid */
-#home {
-  /* Use a CSS grid wrapper by targeting the container pattern */
-}
+
 
 /* Since boxes are direct children of section, use CSS grid trick */
-#home > .committee-box {
-  /* These get display:grid from parent — see wrapper below */
-}
+
 
 /* Override: wrap with implicit grid using display:contents parent trick.
    We'll handle via a flex + width approach so it works without JS. */
@@ -200,15 +194,7 @@ section h1::after {
   padding: 3.5rem 0 4rem;
 }
 
-/* Create virtual 3-column grid for committee boxes */
-#home .committee-box:first-of-type {
-  /* Grid starts */
-}
 
-/* The real grid magic — all committee boxes in a 3-col grid */
-#home {
-  /* Wrap committee-boxes with a CSS grid using a pseudo-wrapper */
-}
 
 /* ── Committee Boxes — 3 per row grid layout ── */
 /* We wrap them at the CSS level using a display grid on a parent. 
@@ -257,9 +243,7 @@ section h1::after {
 }
 
 /* Wrap committee boxes in a grid layout */
-#home .committee-box:first-of-type {
-  /* Begin grid context — handled via wrapping approach in the section */
-}
+
 
 /* ── Make the section itself a grid for committee boxes ── */
 #home {
