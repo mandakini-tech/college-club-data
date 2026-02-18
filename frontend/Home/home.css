@@ -241,10 +241,7 @@ section h1::after {
 #home .committee-box:hover::before {
   opacity: 1;
 }
-
 /* Wrap committee boxes in a grid layout */
-
-
 /* ── Make the section itself a grid for committee boxes ── */
 #home {
   display: grid !important;
