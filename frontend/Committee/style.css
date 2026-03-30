@@ -1,0 +1,46 @@
+body {
+  font-family: 'DM Sans';
+}
+
+/* Back button */
+.back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--gold);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+/* Page */
+.committee-page h1 {
+  font-size: 2.5rem;
+  font-family: 'Playfair Display';
+}
+
+/* Card */
+.committee-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Image */
+.image-wrapper {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: auto;
+  border: 2px solid var(--gold);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
