@@ -174,3 +174,6 @@ function openAdminPanel() {
 function openRoleForm() {
   window.location.href = "addrolefromuser/role.html";
 }
+function openConnectModal() {
+  window.location.href = "connectwithus/connect.html";
+}

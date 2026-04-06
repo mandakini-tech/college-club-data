@@ -20,7 +20,7 @@ form.addEventListener("submit", async (e) => {
             localStorage.setItem("adminToken", data.token);
             alert("Login successful! Redirecting to admin dashboard...");
             //redirect to admin dashboard
-            window.location.href = "../Home/admin/admin.html";
+window.open("../Home/admin/admin.html", "_blank");
         } else {
             alert(data.message || "Login failed. Please try again.");
         }
