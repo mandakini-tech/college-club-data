@@ -20,6 +20,12 @@
   height: 68px;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
 .logo {
   font-family: var(--font-display);
   font-size: 1.6rem;
