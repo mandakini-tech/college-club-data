@@ -30,7 +30,7 @@ const committees = [
   {
     name: 'Pratibimb',
     desc: 'Planning & Coordination',
-    img: '/logos/prati.jpg',
+    img: 'https://th.bing.com/th/id/OIP.KqYZLbFCa-6k6jn_90KMfgHaHZ?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
   },
   {
     name: 'Digital VJTI',
@@ -40,7 +40,7 @@ const committees = [
   {
     name: 'E-Cell VJTI',
     desc: 'Entrepreneurship development committee',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGDF4gFG6kYGBZGfcgHX-K-VkjVWR0SyXSxg&s',
+    img: 'https://tse1.mm.bing.net/th/id/OIP.wOZONRoKs0bc1y_dTcAZnwHaHT?rs=1&pid=ImgDetMain&o=7&rm=3',
   },
   {
     name: 'DLA',
