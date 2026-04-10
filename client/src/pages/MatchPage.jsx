@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './MatchPage.css';
 
 const interestsList = [
@@ -33,6 +34,7 @@ export default function MatchPage() {
   const [selected, setSelected] = useState(new Set());
   const [results, setResults] = useState(null);
   const resultRef = useRef(null);
+  const navigate = useNavigate();
 
   const toggleInterest = (interest) => {
     setSelected(prev => {
@@ -64,6 +66,11 @@ export default function MatchPage() {
     }, 100);
   };
 
+  const clearSelection = () => {
+    setSelected(new Set());
+    setResults(null);
+  };
+
   return (
     <div className="container match-page">
       <div className="match-container">
@@ -86,7 +93,10 @@ export default function MatchPage() {
           ))}
         </div>
 
-        <button className="match-button" onClick={findMatch}>Find My Match!</button>
+        <div className="match-actions">
+          <button className="match-button" onClick={findMatch}>Find My Match!</button>
+          <button className="match-button clear-button" onClick={clearSelection}>Clear</button>
+        </div>
 
         {results && (
           <div className="match-result" ref={resultRef}>
@@ -94,7 +104,7 @@ export default function MatchPage() {
             <p className="match-result-desc">Based on your selected interests:</p>
             <div>
               {results.map((r, i) => (
-                <div key={i} className="match-card">
+                <div key={i} className="match-card clickable-card" onClick={() => navigate(`/committee?committeeName=${encodeURIComponent(r.committee.split(' / ')[0])}`)}>
                   <h4>{r.interest}</h4>
                   <p><strong>Committee:</strong> {r.committee}</p>
                   <p>{r.desc}</p>

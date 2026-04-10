@@ -25,7 +25,7 @@ export default function Navbar({ onToggleSidebar, sidebarOpen }) {
           <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
           <li><Link to="/announcements" className={location.pathname === '/announcements' ? 'active' : ''}>Announcements</Link></li>
           <li><Link to="/events" className={location.pathname === '/events' ? 'active' : ''}>Events</Link></li>
-          <li><Link to="/match" className={location.pathname === '/match' ? 'active' : ''}>Connect</Link></li>
+          <li><Link to="/match" className={location.pathname === '/match' ? 'active' : ''}>Your Match</Link></li>
         </ul>
       </div>
     </nav>

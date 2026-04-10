@@ -184,3 +184,34 @@
   color: var(--text-secondary);
   font-size: 0.85rem;
 }
+
+.match-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.clear-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+.clear-button::before {
+  display: none;
+}
+
+.clear-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: none;
+}
+
+.clickable-card {
+  cursor: pointer;
+}
+
+.clickable-card:hover {
+  border-color: var(--gold);
+}
