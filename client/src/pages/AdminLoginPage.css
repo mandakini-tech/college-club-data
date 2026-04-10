@@ -79,7 +79,7 @@
   font-size: 0.65rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: #c9944c;
   margin-bottom: 0.75rem;
   font-weight: 600;
 }
@@ -88,7 +88,7 @@
   font-family: var(--font-display);
   font-size: 2.4rem;
   font-weight: 900;
-  color: var(--text-primary);
+  color: #f5f0e8;
   margin-bottom: 0.5rem;
   line-height: 1;
 }
@@ -104,7 +104,7 @@
 .admin-divider {
   width: 40px;
   height: 1px;
-  background: var(--rust);
+  background: #c9944c;
   margin: 0 auto 2.5rem;
   opacity: 0.6;
 }
@@ -130,7 +130,7 @@
   padding: 0.9rem 1rem;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(245,240,232,0.1);
-  color: var(--text-primary);
+  color: #f5f0e8;
   font-family: var(--font-body);
   font-size: 1rem;
   letter-spacing: 0.15em;
@@ -153,12 +153,12 @@
 .admin-login-btn {
   width: 100%;
   padding: 0.95rem;
-  background: var(--rust);
-  color: var(--text-primary);
+  background: #c9944c;
+  color: #100e0c;
   border: none;
   font-family: var(--font-body);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   cursor: pointer;
@@ -180,9 +180,9 @@
 }
 
 .admin-login-btn:hover {
-  background: var(--rust-dark);
+  background: #d4a45a;
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(201,76,46,0.3);
+  box-shadow: 0 4px 20px rgba(201,148,76,0.4);
 }
 
 .admin-login-btn:hover::before {
@@ -192,14 +192,14 @@
 .warning-box {
   margin-top: 2rem;
   padding: 0.9rem;
-  border: 1px solid rgba(201,76,46,0.2);
-  background: rgba(201,76,46,0.06);
+  border: 1px solid rgba(201,148,76,0.2);
+  background: rgba(201,148,76,0.06);
   font-size: 0.72rem;
-  color: rgba(245,240,232,0.3);
+  color: rgba(245,240,232,0.4);
   line-height: 1.6;
   letter-spacing: 0.03em;
 }
 
 .warning-box strong {
-  color: var(--rust);
+  color: #c9944c;
 }
