@@ -12,7 +12,7 @@ export default function Sidebar({ isOpen, onClose, onOpenIssue }) {
 
         <nav className="sidebar-nav">
           <ul>
-            <li><Link to="/" onClick={onClose}>🏠 Home</Link></li>
+            <li><Link to="/home" onClick={onClose}>🏠 Home</Link></li>
             <li><Link to="/events" onClick={onClose}>📅 Events</Link></li>
             <li><Link to="/match" onClick={onClose}>🎯 Your Match</Link></li>
             <li className="divider"></li>
